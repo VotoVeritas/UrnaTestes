@@ -158,6 +158,8 @@ public class TelaVotacao extends javax.swing.JFrame {
         Confirma = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(255, 255, 255));
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -241,6 +243,14 @@ public class TelaVotacao extends javax.swing.JFrame {
         FIMlbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         FIMlbl.setText("FIM");
 
+        Candidato1.setFont(new java.awt.Font("Bahnschrift", 1, 12)); // NOI18N
+
+        Candidato2.setFont(new java.awt.Font("Bahnschrift", 1, 12)); // NOI18N
+
+        Votos2.setFont(new java.awt.Font("Bahnschrift", 1, 12)); // NOI18N
+
+        Votos1.setFont(new java.awt.Font("Bahnschrift", 1, 12)); // NOI18N
+
         javax.swing.GroupLayout FIMLayout = new javax.swing.GroupLayout(FIM);
         FIM.setLayout(FIMLayout);
         FIMLayout.setHorizontalGroup(
@@ -258,7 +268,7 @@ public class TelaVotacao extends javax.swing.JFrame {
                     .addGroup(FIMLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(Candidato2, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(22, 22, 22)
+                        .addGap(18, 18, 18)
                         .addComponent(Votos2, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(88, Short.MAX_VALUE))
         );
@@ -435,7 +445,7 @@ public class TelaVotacao extends javax.swing.JFrame {
             .addGroup(TelaPrincipalLayout.createSequentialGroup()
                 .addComponent(PanelTopo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(PanelVoto, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
+                .addComponent(PanelVoto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(PanelOpcoes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -727,9 +737,8 @@ public class TelaVotacao extends javax.swing.JFrame {
            } else if(VoteNullBranco.isVisible()& VoteNullBranco.getText().equals("VOTO NULO")&NumeroErrado.getText().equals("Número Errado")){
             votosNulos = votosNulos +1;
             }
-            Votos1.setText(String.valueOf(candidatos[0].votos));
-            Votos2.setText(String.valueOf(candidatos[1].votos));
-
+            Votos1.setText(String.valueOf("Votos: " + candidatos[0].votos));
+            Votos2.setText(String.valueOf("Votos: " + candidatos[1].votos));
             FIM.setVisible(true);
             Candidato1.setText(candidatos[0].nome);
             Candidato2.setText(candidatos[1].nome);
