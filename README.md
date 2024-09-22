@@ -1,6 +1,6 @@
 # UrnaTestes
 
-## Testes de código para UrnaNova
+## Testes de código para Urna
 <a target="_blank" href="https://github.com/VotoVeritas/UrnaNova">Repositório principal da Urna</a>
 
 ## Colaboradores:
