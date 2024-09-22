@@ -25,55 +25,67 @@ public class TelaVotacao extends javax.swing.JFrame {
     }
     
     public void TrueContent(){
-        GameYear.setVisible(true);
-        YourVote.setVisible(true);
-        FotoJogo.setVisible(true);
-        Desenvolvedor.setVisible(true);
-        NomeDev.setVisible(true);
-        Jogo.setVisible(true);
-        NomeJogo.setVisible(true);
+    Gamelbl.setVisible(true);
+    Name.setVisible(true);
+    Dev.setVisible(true);
     }
     
     public void FalseContent(){
-        GameYear.setVisible(false);
-        YourVote.setVisible(false);
-        FotoJogo.setVisible(false);
-        Desenvolvedor.setVisible(false);
-        NomeDev.setVisible(false);
-        Jogo.setVisible(false);
-        NomeJogo.setVisible(false);
+    Name.setVisible(false);
+    Dev.setVisible(false);
+    NumeroErrado.setText("");
+    VoteNullBranco.setText("");
+    Gamelbl.setVisible(false);
     }
+    
+    public void Basic(){
+    PanelTopo.setVisible(true);
+    PanelOpcoes.setVisible(true);
+    }
+    
     public void StatCompetition(){
-        candidatos = new Candidato[2];
-        candidatos[0] = new Candidato("Homem-Aranha2", "01", "Insomniac Games","/br/edu/images/SpiderMan2.png");
-        candidatos[1] = new Candidato("Resident-Evil4", "02", "Capcom","/br/edu/images/ResidenteEvil4.png");
+        candidatos = new Candidato[3];
+        candidatos[0] = new Candidato("Homem-Aranha 2", "Insomniac Games", "/br/edu/utils/SpiderMan2.png","01");
+        candidatos[1] = new Candidato("Resident-Evil 4", "Capcom", "/br/edu/utils/ResidenteEvil4.png","02");
+        candidatos[2] = new Candidato("Homem-Aranha 2", "Insomniac Games", "/br/edu/utils/SpiderMan2.png","03 ");
     }
-public void Votacao(String b){
-        if(!FIM.isVisible()){
-            if(Prim.getText().equals("")){
-            Prim.setText(b);
-            } else if(!Prim.getText().equals("") &Seg.getText().equals("")) {
-            Seg.setText(b);
-            String numeroP = Prim.getText() + Seg.getText();
+    
+    public void Digitar(String n){
+            if(Nmr1lbl.getText().equals("")){
+            Nmr1lbl.setText(n);
+            } else if(!Nmr1lbl.getText().equals("") &Nmr2lbl.getText().equals("")) {
+            Nmr2lbl.setText(n);
+            String nmr = Nmr1lbl.getText() + Nmr2lbl.getText();
         
                 for (Candidato candidato : candidatos) {
-                    if ((candidato.numero).equals(numeroP)) {
-                    TrueContent();
-                
-                    GameYear.setIcon(new javax.swing.ImageIcon(getClass().getResource(candidato.fotojogo)));
-                    NomeJogo.setText(candidato.nome);
-                    NomeDev.setText(candidato.desenvolvedor);
+                    if ((candidato.numero).equals(nmr)) {
+                        TrueContent();
+                        
+                        Gamelbl.setIcon(new javax.swing.ImageIcon(getClass().getResource(candidato.fotojogo)));
+                        GameName.setText(candidato.nome);                        
+                        DevName.setText(candidato.desenvolvedor);
+                        VoteNullBranco.setVisible(false);
+                        NumeroErrado.setVisible(false);
+                        VoteNullBranco.setText("");
+                        NumeroErrado.setText("");
                     } else{
-                        if(!Prim.equals("")&!Seg.equals("")){
+                        if(!Nmr1lbl.equals("")&!Nmr2lbl.equals("")){
+                        VoteNullBranco.setVisible(true);
+                        NumeroErrado.setVisible(true);
+                        VoteNullBranco.setText("VOTO NULO");
+                        NumeroErrado.setText("Número Errado");
+                        PanelNumero.setVisible(false);
+                        Name.setVisible(false);
+                        Dev.setVisible(false);
+                        GameName.setText("");
+                        DevName.setText("");
+                        Gamelbl.setVisible(false);
+                        
                         }
                     }
                 }      
             }
-        } 
-        
-        
     }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -83,66 +95,50 @@ public void Votacao(String b){
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        FIM = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         TelaFixa = new javax.swing.JPanel();
         TitleGame = new javax.swing.JLabel();
         TelaPrincipal = new javax.swing.JPanel();
-        GameYear = new javax.swing.JLabel();
-        YourVote = new javax.swing.JLabel();
-        FotoJogo = new javax.swing.JLabel();
+        PanelVoto = new javax.swing.JPanel();
+        YearGame1 = new javax.swing.JLabel();
+        PanelNumero = new javax.swing.JPanel();
         PanNum1 = new javax.swing.JPanel();
-        Prim = new javax.swing.JLabel();
+        Nmr1lbl = new javax.swing.JLabel();
         PanNum2 = new javax.swing.JPanel();
-        Seg = new javax.swing.JLabel();
-        YourVote1 = new javax.swing.JLabel();
-        NomeJogo = new javax.swing.JLabel();
-        Desenvolvedor = new javax.swing.JLabel();
-        Jogo = new javax.swing.JLabel();
-        NomeDev = new javax.swing.JLabel();
+        Nmr2lbl = new javax.swing.JLabel();
+        Nmrlbl = new javax.swing.JLabel();
+        NumeroErrado = new javax.swing.JLabel();
+        GameName = new javax.swing.JLabel();
+        Name = new javax.swing.JLabel();
+        DevName = new javax.swing.JLabel();
+        Dev = new javax.swing.JLabel();
+        VoteNullBranco = new javax.swing.JLabel();
+        Gamelbl = new javax.swing.JLabel();
+        PanelTopo = new javax.swing.JPanel();
+        SeuVotolbl = new javax.swing.JLabel();
+        PanelOpcoes = new javax.swing.JPanel();
+        Opcoeslbl = new javax.swing.JLabel();
+        Confirmalbl = new javax.swing.JLabel();
+        Corrigelbl = new javax.swing.JLabel();
         Teclado = new javax.swing.JPanel();
         Num1 = new javax.swing.JButton();
         Num2 = new javax.swing.JButton();
         Num3 = new javax.swing.JButton();
-        Num4 = new javax.swing.JButton();
-        Num5 = new javax.swing.JButton();
         Num6 = new javax.swing.JButton();
-        Num7 = new javax.swing.JButton();
-        Num8 = new javax.swing.JButton();
+        Num5 = new javax.swing.JButton();
+        Num4 = new javax.swing.JButton();
         Num9 = new javax.swing.JButton();
-        Num10 = new javax.swing.JButton();
+        Num8 = new javax.swing.JButton();
+        Num7 = new javax.swing.JButton();
+        Num0 = new javax.swing.JButton();
         Branco = new javax.swing.JButton();
         Corrige = new javax.swing.JButton();
         Confirma = new javax.swing.JButton();
+        FIM = new javax.swing.JPanel();
+        FIMlbl = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        FIM.setBackground(new java.awt.Color(255, 255, 255));
-
-        jLabel1.setFont(new java.awt.Font("Yu Gothic Medium", 1, 150)); // NOI18N
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("FIM");
-
-        javax.swing.GroupLayout FIMLayout = new javax.swing.GroupLayout(FIM);
-        FIM.setLayout(FIMLayout);
-        FIMLayout.setHorizontalGroup(
-            FIMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, FIMLayout.createSequentialGroup()
-                .addContainerGap(63, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(59, 59, 59))
-        );
-        FIMLayout.setVerticalGroup(
-            FIMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, FIMLayout.createSequentialGroup()
-                .addContainerGap(22, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(17, 17, 17))
-        );
-
-        getContentPane().add(FIM, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 410, 280));
 
         TelaFixa.setBackground(new java.awt.Color(255, 255, 255));
         TelaFixa.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
@@ -174,125 +170,135 @@ public void Votacao(String b){
         TelaPrincipal.setMaximumSize(new java.awt.Dimension(420, 265));
         TelaPrincipal.setPreferredSize(new java.awt.Dimension(420, 265));
 
-        GameYear.setFont(new java.awt.Font("Bahnschrift", 1, 36)); // NOI18N
-        GameYear.setText("Jogo do ano");
+        PanelVoto.setBackground(new java.awt.Color(255, 255, 255));
+        PanelVoto.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        YourVote.setFont(new java.awt.Font("Bahnschrift", 0, 14)); // NOI18N
-        YourVote.setText("Numero:");
+        YearGame1.setFont(new java.awt.Font("Segoe UI", 1, 35)); // NOI18N
+        YearGame1.setText("Jogo do ano");
+        PanelVoto.add(YearGame1, new org.netbeans.lib.awtextra.AbsoluteConstraints(38, 6, -1, -1));
+
+        PanelNumero.setBackground(new java.awt.Color(255, 255, 255));
+        PanelNumero.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         PanNum1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
 
-        Prim.setFont(new java.awt.Font("Segoe UI Semibold", 1, 35)); // NOI18N
-        Prim.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Prim.setToolTipText("");
+        Nmr1lbl.setFont(new java.awt.Font("Segoe UI Semibold", 1, 35)); // NOI18N
+        Nmr1lbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Nmr1lbl.setToolTipText("");
 
         javax.swing.GroupLayout PanNum1Layout = new javax.swing.GroupLayout(PanNum1);
         PanNum1.setLayout(PanNum1Layout);
         PanNum1Layout.setHorizontalGroup(
             PanNum1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Prim, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
+            .addComponent(Nmr1lbl, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
         );
         PanNum1Layout.setVerticalGroup(
             PanNum1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Prim, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
+            .addComponent(Nmr1lbl, javax.swing.GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE)
         );
+
+        PanelNumero.add(PanNum1, new org.netbeans.lib.awtextra.AbsoluteConstraints(64, 6, -1, 53));
 
         PanNum2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
 
-        Seg.setFont(new java.awt.Font("Segoe UI Semibold", 1, 35)); // NOI18N
-        Seg.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Seg.setToolTipText("");
+        Nmr2lbl.setFont(new java.awt.Font("Segoe UI Semibold", 1, 35)); // NOI18N
+        Nmr2lbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Nmr2lbl.setToolTipText("");
 
         javax.swing.GroupLayout PanNum2Layout = new javax.swing.GroupLayout(PanNum2);
         PanNum2.setLayout(PanNum2Layout);
         PanNum2Layout.setHorizontalGroup(
             PanNum2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Seg, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
+            .addComponent(Nmr2lbl, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
         );
         PanNum2Layout.setVerticalGroup(
             PanNum2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Seg, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
+            .addComponent(Nmr2lbl, javax.swing.GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE)
         );
 
-        YourVote1.setFont(new java.awt.Font("Bahnschrift", 0, 14)); // NOI18N
-        YourVote1.setText("Seu voto para");
+        PanelNumero.add(PanNum2, new org.netbeans.lib.awtextra.AbsoluteConstraints(128, 6, -1, -1));
 
-        NomeJogo.setFont(new java.awt.Font("Bahnschrift", 0, 14)); // NOI18N
-        NomeJogo.setText("Nome:");
+        Nmrlbl.setText("Numeros:");
+        PanelNumero.add(Nmrlbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 24, -1, -1));
 
-        Desenvolvedor.setFont(new java.awt.Font("Bahnschrift", 0, 14)); // NOI18N
-        Desenvolvedor.setText("Desenvolvedor:");
+        PanelVoto.add(PanelNumero, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 190, 70));
 
-        Jogo.setFont(new java.awt.Font("Bahnschrift", 0, 14)); // NOI18N
+        NumeroErrado.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        NumeroErrado.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        PanelVoto.add(NumeroErrado, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, 180, 30));
+        PanelVoto.add(GameName, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 130, 150, 20));
 
-        NomeDev.setFont(new java.awt.Font("Bahnschrift", 0, 14)); // NOI18N
+        Name.setText("Nome:");
+        PanelVoto.add(Name, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 40, -1));
+        PanelVoto.add(DevName, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 160, 150, 20));
+
+        Dev.setText("Devsenvolvedor:");
+        PanelVoto.add(Dev, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 100, -1));
+
+        VoteNullBranco.setFont(new java.awt.Font("Segoe UI", 1, 35)); // NOI18N
+        VoteNullBranco.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        PanelVoto.add(VoteNullBranco, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 70, 320, 50));
+        PanelVoto.add(Gamelbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 10, 133, 133));
+
+        PanelTopo.setBackground(new java.awt.Color(255, 255, 255));
+        PanelTopo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        SeuVotolbl.setText("SEU VOTO PARA:");
+        PanelTopo.add(SeuVotolbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 8, 161, -1));
+
+        PanelOpcoes.setBackground(new java.awt.Color(255, 255, 255));
+
+        Opcoeslbl.setText("Aperte a tecla");
+
+        Confirmalbl.setText("CONFIRMA para confirmar o voto");
+
+        Corrigelbl.setText("CORRIGE para reiniciar o voto");
+
+        javax.swing.GroupLayout PanelOpcoesLayout = new javax.swing.GroupLayout(PanelOpcoes);
+        PanelOpcoes.setLayout(PanelOpcoesLayout);
+        PanelOpcoesLayout.setHorizontalGroup(
+            PanelOpcoesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelOpcoesLayout.createSequentialGroup()
+                .addGap(6, 6, 6)
+                .addComponent(Opcoeslbl))
+            .addGroup(PanelOpcoesLayout.createSequentialGroup()
+                .addGap(12, 12, 12)
+                .addComponent(Confirmalbl))
+            .addGroup(PanelOpcoesLayout.createSequentialGroup()
+                .addGap(12, 12, 12)
+                .addComponent(Corrigelbl))
+        );
+        PanelOpcoesLayout.setVerticalGroup(
+            PanelOpcoesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelOpcoesLayout.createSequentialGroup()
+                .addComponent(Opcoeslbl)
+                .addGap(6, 6, 6)
+                .addComponent(Confirmalbl)
+                .addGap(6, 6, 6)
+                .addComponent(Corrigelbl))
+        );
 
         javax.swing.GroupLayout TelaPrincipalLayout = new javax.swing.GroupLayout(TelaPrincipal);
         TelaPrincipal.setLayout(TelaPrincipalLayout);
         TelaPrincipalLayout.setHorizontalGroup(
             TelaPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(PanelVoto, javax.swing.GroupLayout.DEFAULT_SIZE, 416, Short.MAX_VALUE)
             .addGroup(TelaPrincipalLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(TelaPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(TelaPrincipalLayout.createSequentialGroup()
-                        .addComponent(Desenvolvedor, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 139, Short.MAX_VALUE)
-                        .addComponent(NomeDev, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(TelaPrincipalLayout.createSequentialGroup()
-                        .addGroup(TelaPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(TelaPrincipalLayout.createSequentialGroup()
-                                .addGap(11, 11, 11)
-                                .addComponent(YourVote1, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(TelaPrincipalLayout.createSequentialGroup()
-                                .addGap(22, 22, 22)
-                                .addComponent(GameYear, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(TelaPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(TelaPrincipalLayout.createSequentialGroup()
-                                    .addComponent(YourVote)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(PanNum1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(PanNum2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(TelaPrincipalLayout.createSequentialGroup()
-                                    .addComponent(NomeJogo)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(Jogo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                        .addGap(26, 26, 26)
-                        .addComponent(FotoJogo, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                    .addComponent(PanelTopo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(PanelOpcoes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         TelaPrincipalLayout.setVerticalGroup(
             TelaPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(TelaPrincipalLayout.createSequentialGroup()
-                .addGroup(TelaPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(TelaPrincipalLayout.createSequentialGroup()
-                        .addGap(12, 12, 12)
-                        .addComponent(YourVote1))
-                    .addGroup(TelaPrincipalLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(FotoJogo, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(TelaPrincipalLayout.createSequentialGroup()
-                        .addGap(36, 36, 36)
-                        .addComponent(GameYear)
-                        .addGroup(TelaPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(TelaPrincipalLayout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(TelaPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(PanNum1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(PanNum2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(TelaPrincipalLayout.createSequentialGroup()
-                                .addGap(22, 22, 22)
-                                .addComponent(YourVote)))
-                        .addGap(16, 16, 16)
-                        .addGroup(TelaPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(NomeJogo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(Jogo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(TelaPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(Desenvolvedor)
-                            .addComponent(NomeDev, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(84, Short.MAX_VALUE))
+                .addComponent(PanelTopo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(PanelVoto, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(PanelOpcoes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         getContentPane().add(TelaPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 72, -1, 300));
@@ -343,17 +349,17 @@ public void Votacao(String b){
             }
         });
 
-        Num4.setFont(new java.awt.Font("Rubik", 1, 18)); // NOI18N
-        Num4.setText("6");
-        Num4.setToolTipText("");
-        Num4.setAlignmentY(0.0F);
-        Num4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        Num4.setMaximumSize(new java.awt.Dimension(40, 30));
-        Num4.setMinimumSize(new java.awt.Dimension(40, 30));
-        Num4.setPreferredSize(new java.awt.Dimension(40, 30));
-        Num4.addActionListener(new java.awt.event.ActionListener() {
+        Num6.setFont(new java.awt.Font("Rubik", 1, 18)); // NOI18N
+        Num6.setText("6");
+        Num6.setToolTipText("");
+        Num6.setAlignmentY(0.0F);
+        Num6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Num6.setMaximumSize(new java.awt.Dimension(40, 30));
+        Num6.setMinimumSize(new java.awt.Dimension(40, 30));
+        Num6.setPreferredSize(new java.awt.Dimension(40, 30));
+        Num6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Num4ActionPerformed(evt);
+                Num6ActionPerformed(evt);
             }
         });
 
@@ -371,31 +377,31 @@ public void Votacao(String b){
             }
         });
 
-        Num6.setFont(new java.awt.Font("Rubik", 1, 18)); // NOI18N
-        Num6.setText("4");
-        Num6.setToolTipText("");
-        Num6.setAlignmentY(0.0F);
-        Num6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        Num6.setMaximumSize(new java.awt.Dimension(40, 30));
-        Num6.setMinimumSize(new java.awt.Dimension(40, 30));
-        Num6.setPreferredSize(new java.awt.Dimension(40, 30));
-        Num6.addActionListener(new java.awt.event.ActionListener() {
+        Num4.setFont(new java.awt.Font("Rubik", 1, 18)); // NOI18N
+        Num4.setText("4");
+        Num4.setToolTipText("");
+        Num4.setAlignmentY(0.0F);
+        Num4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Num4.setMaximumSize(new java.awt.Dimension(40, 30));
+        Num4.setMinimumSize(new java.awt.Dimension(40, 30));
+        Num4.setPreferredSize(new java.awt.Dimension(40, 30));
+        Num4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Num6ActionPerformed(evt);
+                Num4ActionPerformed(evt);
             }
         });
 
-        Num7.setFont(new java.awt.Font("Rubik", 1, 18)); // NOI18N
-        Num7.setText("9");
-        Num7.setToolTipText("");
-        Num7.setAlignmentY(0.0F);
-        Num7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        Num7.setMaximumSize(new java.awt.Dimension(40, 30));
-        Num7.setMinimumSize(new java.awt.Dimension(40, 30));
-        Num7.setPreferredSize(new java.awt.Dimension(40, 30));
-        Num7.addActionListener(new java.awt.event.ActionListener() {
+        Num9.setFont(new java.awt.Font("Rubik", 1, 18)); // NOI18N
+        Num9.setText("9");
+        Num9.setToolTipText("");
+        Num9.setAlignmentY(0.0F);
+        Num9.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Num9.setMaximumSize(new java.awt.Dimension(40, 30));
+        Num9.setMinimumSize(new java.awt.Dimension(40, 30));
+        Num9.setPreferredSize(new java.awt.Dimension(40, 30));
+        Num9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Num7ActionPerformed(evt);
+                Num9ActionPerformed(evt);
             }
         });
 
@@ -413,31 +419,31 @@ public void Votacao(String b){
             }
         });
 
-        Num9.setFont(new java.awt.Font("Rubik", 1, 18)); // NOI18N
-        Num9.setText("7");
-        Num9.setToolTipText("");
-        Num9.setAlignmentY(0.0F);
-        Num9.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        Num9.setMaximumSize(new java.awt.Dimension(40, 30));
-        Num9.setMinimumSize(new java.awt.Dimension(40, 30));
-        Num9.setPreferredSize(new java.awt.Dimension(40, 30));
-        Num9.addActionListener(new java.awt.event.ActionListener() {
+        Num7.setFont(new java.awt.Font("Rubik", 1, 18)); // NOI18N
+        Num7.setText("7");
+        Num7.setToolTipText("");
+        Num7.setAlignmentY(0.0F);
+        Num7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Num7.setMaximumSize(new java.awt.Dimension(40, 30));
+        Num7.setMinimumSize(new java.awt.Dimension(40, 30));
+        Num7.setPreferredSize(new java.awt.Dimension(40, 30));
+        Num7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Num9ActionPerformed(evt);
+                Num7ActionPerformed(evt);
             }
         });
 
-        Num10.setFont(new java.awt.Font("Rubik", 1, 18)); // NOI18N
-        Num10.setText("0");
-        Num10.setToolTipText("");
-        Num10.setAlignmentY(0.0F);
-        Num10.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        Num10.setMaximumSize(new java.awt.Dimension(40, 30));
-        Num10.setMinimumSize(new java.awt.Dimension(40, 30));
-        Num10.setPreferredSize(new java.awt.Dimension(40, 30));
-        Num10.addActionListener(new java.awt.event.ActionListener() {
+        Num0.setFont(new java.awt.Font("Rubik", 1, 18)); // NOI18N
+        Num0.setText("0");
+        Num0.setToolTipText("");
+        Num0.setAlignmentY(0.0F);
+        Num0.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Num0.setMaximumSize(new java.awt.Dimension(40, 30));
+        Num0.setMinimumSize(new java.awt.Dimension(40, 30));
+        Num0.setPreferredSize(new java.awt.Dimension(40, 30));
+        Num0.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Num10ActionPerformed(evt);
+                Num0ActionPerformed(evt);
             }
         });
 
@@ -445,6 +451,11 @@ public void Votacao(String b){
         Branco.setText("BRANCO");
         Branco.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Branco.setPreferredSize(new java.awt.Dimension(60, 30));
+        Branco.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BrancoActionPerformed(evt);
+            }
+        });
 
         Corrige.setBackground(new java.awt.Color(255, 0, 0));
         Corrige.setFont(new java.awt.Font("Calibri", 1, 10)); // NOI18N
@@ -482,8 +493,8 @@ public void Votacao(String b){
                     .addGroup(TecladoLayout.createSequentialGroup()
                         .addGroup(TecladoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(Num1, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
-                            .addComponent(Num6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(Num9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(Num4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(Num7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGroup(TecladoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(TecladoLayout.createSequentialGroup()
                                 .addGap(34, 34, 34)
@@ -497,13 +508,13 @@ public void Votacao(String b){
                         .addComponent(Branco, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(Corrige, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(Num10, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Num0, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(TecladoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(TecladoLayout.createSequentialGroup()
                         .addGap(27, 27, 27)
                         .addGroup(TecladoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Num7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Num4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Num9, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Num6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(Num3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(TecladoLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -521,40 +532,65 @@ public void Votacao(String b){
                 .addGap(22, 22, 22)
                 .addGroup(TecladoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(TecladoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(Num6, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(Num4, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(Num4, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Num6, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(Num5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(TecladoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Num9, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Num7, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Num8, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Num7, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Num9, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(Num10, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Num0, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(TecladoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(TecladoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(Branco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(Corrige, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(Confirma, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         Branco.getAccessibleContext().setAccessibleDescription("");
 
         getContentPane().add(Teclado, new org.netbeans.lib.awtextra.AbsoluteConstraints(432, 72, 268, 300));
 
+        FIM.setBackground(new java.awt.Color(255, 255, 255));
+
+        FIMlbl.setFont(new java.awt.Font("Yu Gothic Medium", 1, 150)); // NOI18N
+        FIMlbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        FIMlbl.setText("FIM");
+
+        javax.swing.GroupLayout FIMLayout = new javax.swing.GroupLayout(FIM);
+        FIM.setLayout(FIMLayout);
+        FIMLayout.setHorizontalGroup(
+            FIMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, FIMLayout.createSequentialGroup()
+                .addContainerGap(63, Short.MAX_VALUE)
+                .addComponent(FIMlbl)
+                .addGap(59, 59, 59))
+        );
+        FIMLayout.setVerticalGroup(
+            FIMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, FIMLayout.createSequentialGroup()
+                .addContainerGap(22, Short.MAX_VALUE)
+                .addComponent(FIMlbl)
+                .addGap(17, 17, 17))
+        );
+
+        getContentPane().add(FIM, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 410, 280));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void Num10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Num10ActionPerformed
+    private void Num0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Num0ActionPerformed
         // TODO add your handling code here:
-        Votacao("0");
-    }//GEN-LAST:event_Num10ActionPerformed
+        Digitar("0");
+    }//GEN-LAST:event_Num0ActionPerformed
 
     private void ConfirmaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConfirmaActionPerformed
-String numeroP = Prim.getText() + Seg.getText();
-        if(!Prim.getText().equals("") & !Seg.getText().equals("")){
+String numeroP = Nmr1lbl.getText() + Nmr2lbl.getText();
+        if(!Nmr1lbl.getText().equals("") & !Nmr2lbl.getText().equals("")){
             for (Candidato candidato : candidatos) {
                 if (candidato.numero.equals(numeroP)) {
                     candidato.votos = candidato.votos +1;
@@ -562,67 +598,82 @@ String numeroP = Prim.getText() + Seg.getText();
                 } 
             }
             FalseContent();
-            Prim.setText("");
-            Seg.setText("");
-            PanNum1.setVisible(true);
-            PanNum2.setVisible(true);
-            FIM.setVisible(true);
+            Nmr1lbl.setText("");
+            Nmr2lbl.setText("");
+            PanelNumero.setVisible(true);
         }
     }//GEN-LAST:event_ConfirmaActionPerformed
 
     private void CorrigeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CorrigeActionPerformed
         // TODO add your handling code here:
+        Basic();
         FalseContent();
-        Prim.setText("");
-        Seg.setText("");
-        PanNum1.setVisible(true);
-        PanNum2.setVisible(true);
+        PanelVoto.setVisible(true);
+        PanelNumero.setVisible(true);
+        Nmr1lbl.setText("");
+        Nmr2lbl.setText("");  
+        GameName.setText("");
+        DevName.setText("");
+        Gamelbl.setVisible(false);
     }//GEN-LAST:event_CorrigeActionPerformed
-
-    private void Num9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Num9ActionPerformed
-        // TODO add your handling code here:
-                Votacao("9");
-    }//GEN-LAST:event_Num9ActionPerformed
-
-    private void Num8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Num8ActionPerformed
-        // TODO add your handling code here:
-                Votacao("8");
-    }//GEN-LAST:event_Num8ActionPerformed
 
     private void Num7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Num7ActionPerformed
         // TODO add your handling code here:
-                Votacao("7");
+        Digitar("7");
     }//GEN-LAST:event_Num7ActionPerformed
 
-    private void Num6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Num6ActionPerformed
+    private void Num8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Num8ActionPerformed
         // TODO add your handling code here:
-         Votacao("6");
-    }//GEN-LAST:event_Num6ActionPerformed
+        Digitar("8");
+    }//GEN-LAST:event_Num8ActionPerformed
 
-    private void Num5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Num5ActionPerformed
+    private void Num9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Num9ActionPerformed
         // TODO add your handling code here:
-         Votacao("5");
-    }//GEN-LAST:event_Num5ActionPerformed
+        Digitar("9");
+    }//GEN-LAST:event_Num9ActionPerformed
 
     private void Num4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Num4ActionPerformed
         // TODO add your handling code here:
-         Votacao("4");
+        Digitar("4");
     }//GEN-LAST:event_Num4ActionPerformed
+
+    private void Num5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Num5ActionPerformed
+        // TODO add your handling code here:
+        Digitar("5");
+    }//GEN-LAST:event_Num5ActionPerformed
+
+    private void Num6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Num6ActionPerformed
+        // TODO add your handling code here:
+        Digitar("6");
+    }//GEN-LAST:event_Num6ActionPerformed
 
     private void Num3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Num3ActionPerformed
         // TODO add your handling code here:
-         Votacao("3");
+        Digitar("3");
     }//GEN-LAST:event_Num3ActionPerformed
 
     private void Num2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Num2ActionPerformed
         // TODO add your handling code here:
-         Votacao("2");
+        Digitar("2");
     }//GEN-LAST:event_Num2ActionPerformed
 
     private void Num1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Num1ActionPerformed
         // TODO add your handling code here:
-         Votacao("1");
+        Digitar("1");
     }//GEN-LAST:event_Num1ActionPerformed
+
+    private void BrancoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BrancoActionPerformed
+        // TODO add your handling code here:
+        Basic();
+        PanelNumero.setVisible(false);
+        VoteNullBranco.setText("VOTO EM BRANCO");
+        VoteNullBranco.setVisible(true);
+        Name.setVisible(false);
+        Dev.setVisible(false);
+        GameName.setText("");
+        DevName.setText("");
+        NumeroErrado.setVisible(false);
+    }//GEN-LAST:event_BrancoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -663,20 +714,21 @@ String numeroP = Prim.getText() + Seg.getText();
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Branco;
     private javax.swing.JButton Confirma;
+    private javax.swing.JLabel Confirmalbl;
     private javax.swing.JButton Corrige;
-    private javax.swing.JLabel Desenvolvedor;
+    private javax.swing.JLabel Corrigelbl;
+    private javax.swing.JLabel Dev;
+    private javax.swing.JLabel DevName;
     private javax.swing.JPanel FIM;
-    private javax.swing.JLabel First1;
-    private javax.swing.JLabel First2;
-    private javax.swing.JLabel First3;
-    private javax.swing.JLabel First4;
-    private javax.swing.JLabel FotoJogo;
-    private javax.swing.JLabel GameYear;
-    private javax.swing.JLabel Jogo;
-    private javax.swing.JLabel NomeDev;
-    private javax.swing.JLabel NomeJogo;
+    private javax.swing.JLabel FIMlbl;
+    private javax.swing.JLabel GameName;
+    private javax.swing.JLabel Gamelbl;
+    private javax.swing.JLabel Name;
+    private javax.swing.JLabel Nmr1lbl;
+    private javax.swing.JLabel Nmr2lbl;
+    private javax.swing.JLabel Nmrlbl;
+    private javax.swing.JButton Num0;
     private javax.swing.JButton Num1;
-    private javax.swing.JButton Num10;
     private javax.swing.JButton Num2;
     private javax.swing.JButton Num3;
     private javax.swing.JButton Num4;
@@ -685,20 +737,20 @@ String numeroP = Prim.getText() + Seg.getText();
     private javax.swing.JButton Num7;
     private javax.swing.JButton Num8;
     private javax.swing.JButton Num9;
+    private javax.swing.JLabel NumeroErrado;
+    private javax.swing.JLabel Opcoeslbl;
     private javax.swing.JPanel PanNum1;
     private javax.swing.JPanel PanNum2;
-    private javax.swing.JLabel Prim;
-    private javax.swing.JLabel Seg;
+    private javax.swing.JPanel PanelNumero;
+    private javax.swing.JPanel PanelOpcoes;
+    private javax.swing.JPanel PanelTopo;
+    private javax.swing.JPanel PanelVoto;
+    private javax.swing.JLabel SeuVotolbl;
     private javax.swing.JPanel Teclado;
     private javax.swing.JPanel TelaFixa;
     private javax.swing.JPanel TelaPrincipal;
     private javax.swing.JLabel TitleGame;
-    private javax.swing.JLabel YourVote;
-    private javax.swing.JLabel YourVote1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
+    private javax.swing.JLabel VoteNullBranco;
+    private javax.swing.JLabel YearGame1;
     // End of variables declaration//GEN-END:variables
 }
