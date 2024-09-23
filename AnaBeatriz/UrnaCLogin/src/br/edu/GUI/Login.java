@@ -13,6 +13,11 @@ import java.awt.event.KeyListener;
 
 public class Login extends javax.swing.JFrame {
     private User eleitor;
+    private User eleitor1;
+    private User eleitor2;
+    private User eleitor3;
+    private User eleitor4;
+
     private Mesario mesario;
     private Timer tempo;
 
@@ -21,7 +26,12 @@ public class Login extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         Start();
         mesario = new Mesario("1234");
-        eleitor = new User("123456789022");
+        eleitor = new User("12345678");
+        eleitor1 = new User("87654321");
+        eleitor2 = new User("18273645");
+        eleitor3 = new User("34567890");
+        eleitor4 = new User("09876543");
+
         bloquearTecladoFisico(); 
     }
 
@@ -34,10 +44,10 @@ public class Login extends javax.swing.JFrame {
 
     public void Digitar(String n) {
         if (PnlTitle.isVisible()) {
-            if (Title.getText().length() < 12) {
+            if (Title.getText().length() < 8) {
                 Title.setText(Title.getText() + n);
             }
-            if (Title.getText().length() == 12) {
+            if (Title.getText().length() == 8) {
                 // Inicia o Timer
                 tempo = new Timer(3000, new ActionListener() {
                     @Override
@@ -471,7 +481,12 @@ public class Login extends javax.swing.JFrame {
         String tituloDigitado = Title.getText();
     String senhaDigitada = new String(Senha.getPassword());
 
-    boolean tituloValido = tituloDigitado.equals(eleitor.getTitulo());
+    boolean tituloValido = tituloDigitado.equals(eleitor.getTitulo()) ||
+                       tituloDigitado.equals(eleitor1.getTitulo()) ||
+                       tituloDigitado.equals(eleitor2.getTitulo()) ||
+                       tituloDigitado.equals(eleitor3.getTitulo()) ||
+                       tituloDigitado.equals(eleitor4.getTitulo());
+    
     boolean senhaValida = mesario.verificarSenha(senhaDigitada);
 
     if (!tituloValido) {
