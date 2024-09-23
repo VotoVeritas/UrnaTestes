@@ -126,6 +126,7 @@ public class Login extends javax.swing.JFrame {
         PnlTitle.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         ErrorTitulo.setFont(new java.awt.Font("Ebrima", 1, 18)); // NOI18N
+        ErrorTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         PnlTitle.add(ErrorTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 270, 60));
 
         Title.setFont(new java.awt.Font("Ebrima", 1, 36)); // NOI18N
@@ -140,9 +141,11 @@ public class Login extends javax.swing.JFrame {
         PnlSenha.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         ErrorSenha.setFont(new java.awt.Font("Ebrima", 1, 18)); // NOI18N
+        ErrorSenha.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         PnlSenha.add(ErrorSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 250, 40));
 
         Senha.setFont(new java.awt.Font("Ebrima", 1, 24)); // NOI18N
+        Senha.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         Senha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SenhaActionPerformed(evt);
@@ -471,21 +474,19 @@ public class Login extends javax.swing.JFrame {
     boolean tituloValido = tituloDigitado.equals(eleitor.getTitulo());
     boolean senhaValida = mesario.verificarSenha(senhaDigitada);
 
-    // Verifica se o título está correto
     if (!tituloValido) {
-        ErrorTitulo.setText("Título inválido!"); // Mensagem de erro
-        PnlTitle.setVisible(true); // Garante que o painel de título esteja visível
+        ErrorTitulo.setText("Título inválido!"); 
+        PnlTitle.setVisible(true); 
         Title.setVisible(false);
-        PnlSenha.setVisible(false); // Oculta o painel de senha
-        return; // Interrompe a execução do método
+        PnlSenha.setVisible(false); 
+        return;
     }
 
-    // Se o título estiver correto, mas a senha estiver errada
     if (!senhaValida) {
-        ErrorSenha.setText("Senha inválida!"); // Mensagem de erro
-        Senha.setVisible(false);
-        PnlSenha.setVisible(true); // Garante que o painel de senha esteja visível
-        return; // Interrompe a execução do método
+        ErrorSenha.setText("Senha inválida!");
+        Senha.setText("");
+        PnlSenha.setVisible(true); 
+        return; 
     }
 
     // Se tudo estiver correto, prossegue para a tela de votação

@@ -40,9 +40,11 @@ public class TelaVotacao3 extends javax.swing.JFrame {
     private void ReiniciarUrna() {
         System.out.println("Reiniciando");
         this.dispose();
-        TelaVotacao2 Tela = new TelaVotacao2(votosGame1, votosGame2);
-        Tela.setVisible(true);
+        Login login = new Login();
+        login.setVisible(true);
     }
+    
+        
     private boolean isActionPerformed = false;
        /**
      * This method is called from within the constructor to initialize the form.

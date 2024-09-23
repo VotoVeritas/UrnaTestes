@@ -579,7 +579,6 @@ public class TelaVotacao2 extends javax.swing.JFrame {
     } else if (Game2.numero.equals(nmr)) {
         Game2.addVoto();
     }
-
         TelaVotacao3 Fim = new TelaVotacao3(Game1.getVotos(), Game2.getVotos());
         Fim.setLocationRelativeTo(null);
         Fim.setVisible(true);
