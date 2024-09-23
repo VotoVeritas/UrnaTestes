@@ -17,6 +17,7 @@ public class TelaVotacao3 extends javax.swing.JFrame {
      */
     private int votosGame1;
     private int votosGame2;
+    Timer Restart;
     
     public TelaVotacao3(int votosGame1, int votosGame2) {
         setLocationRelativeTo(null); 
@@ -37,11 +38,12 @@ public class TelaVotacao3 extends javax.swing.JFrame {
     } 
         
     private void ReiniciarUrna() {
-        System.out.println("Reiniciando a urna...");
+        System.out.println("Reiniciando");
         this.dispose();
-        TelaVotacao2 Tela2 = new TelaVotacao2();
-        Tela2.setVisible(true);
+        TelaVotacao2 Tela = new TelaVotacao2(votosGame1, votosGame2);
+        Tela.setVisible(true);
     }
+    private boolean isActionPerformed = false;
        /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -57,6 +59,7 @@ public class TelaVotacao3 extends javax.swing.JFrame {
         FIMlbl = new javax.swing.JLabel();
         Candidato1 = new javax.swing.JLabel();
         Candidato2 = new javax.swing.JLabel();
+        Conf = new javax.swing.JLabel();
         Teclado = new javax.swing.JPanel();
         Num1 = new javax.swing.JButton();
         Num2 = new javax.swing.JButton();
@@ -116,6 +119,8 @@ public class TelaVotacao3 extends javax.swing.JFrame {
 
         Candidato2.setFont(new java.awt.Font("Bahnschrift", 1, 12)); // NOI18N
 
+        Conf.setText("Aperte CONFIRMA para votar");
+
         javax.swing.GroupLayout TelaPrincipalLayout = new javax.swing.GroupLayout(TelaPrincipal);
         TelaPrincipal.setLayout(TelaPrincipalLayout);
         TelaPrincipalLayout.setHorizontalGroup(
@@ -129,13 +134,18 @@ public class TelaVotacao3 extends javax.swing.JFrame {
                         .addContainerGap()
                         .addGroup(TelaPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(Candidato2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE)
-                            .addComponent(Candidato1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(Candidato1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(TelaPrincipalLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(Conf, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(94, Short.MAX_VALUE))
         );
         TelaPrincipalLayout.setVerticalGroup(
             TelaPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, TelaPrincipalLayout.createSequentialGroup()
-                .addContainerGap(50, Short.MAX_VALUE)
+                .addContainerGap()
+                .addComponent(Conf)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
                 .addComponent(FIMlbl, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Candidato1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -402,7 +412,19 @@ public class TelaVotacao3 extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ConfirmaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConfirmaActionPerformed
-       
+       if (!isActionPerformed) {
+        isActionPerformed = true;
+
+        Restart = new Timer(2000, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ReiniciarUrna();
+                Restart.stop();
+            }
+        });
+        Restart.start();
+    }
+            
     }//GEN-LAST:event_ConfirmaActionPerformed
 
     private void CorrigeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CorrigeActionPerformed
@@ -500,6 +522,7 @@ public class TelaVotacao3 extends javax.swing.JFrame {
     private javax.swing.JButton Branco;
     private javax.swing.JLabel Candidato1;
     private javax.swing.JLabel Candidato2;
+    private javax.swing.JLabel Conf;
     private javax.swing.JButton Confirma;
     private javax.swing.JButton Corrige;
     private javax.swing.JLabel FIMlbl;

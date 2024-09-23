@@ -4,9 +4,6 @@
  */
 package br.edu.GUI;
 import br.edu.entities.Candidato;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import javax.swing.Timer;
 /**
  *
  * @author Alunos
@@ -31,7 +28,6 @@ public class TelaVotacao2 extends javax.swing.JFrame {
         
         Game1.setVotos(votosGame1);
         Game2.setVotos(votosGame2);
-        
         FalseContent();
     }
     
@@ -56,21 +52,17 @@ public class TelaVotacao2 extends javax.swing.JFrame {
     
     
    public void Digitar(String n) {
-    // Adiciona o número ao primeiro ou segundo label
     if (Nmr1lbl.getText().equals("")) {
         Nmr1lbl.setText(n);
     } else if (!Nmr1lbl.getText().equals("") && Nmr2lbl.getText().equals("")) {
         Nmr2lbl.setText(n);
     }
 
-    // Concatena os números dos labels
     String nmr = Nmr1lbl.getText() + Nmr2lbl.getText();
 
-    // Verifica se ambos os números foram digitados
     if (Nmr1lbl.getText().length() == 1 && Nmr2lbl.getText().length() == 1) {
         boolean candidatoEncontrado = false;
 
-        // Verifica se o número concatenado corresponde a Game1
         if (Game1.numero.trim().equals(nmr)) {
             TrueContent();
             Gamelbl.setIcon(new javax.swing.ImageIcon(getClass().getResource(Game1.fotojogo)));
@@ -78,7 +70,6 @@ public class TelaVotacao2 extends javax.swing.JFrame {
             DevName.setText(Game1.desenvolvedor);
             candidatoEncontrado = true;
         } 
-        // Verifica se o número concatenado corresponde a Game2
         else if (Game2.numero.trim().equals(nmr)) {
             TrueContent();
             Gamelbl.setIcon(new javax.swing.ImageIcon(getClass().getResource(Game2.fotojogo)));
@@ -87,7 +78,6 @@ public class TelaVotacao2 extends javax.swing.JFrame {
             candidatoEncontrado = true;
         }
 
-        // Se nenhum candidato foi encontrado, exiba a mensagem de voto nulo
         if (!candidatoEncontrado) {
             VoteNullBranco.setVisible(true);
             NumeroErrado.setVisible(true);
@@ -250,7 +240,7 @@ public class TelaVotacao2 extends javax.swing.JFrame {
         PanelVoto.add(Name, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 40, -1));
         PanelVoto.add(DevName, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 160, 150, 20));
 
-        Dev.setText("Devsenvolvedor:");
+        Dev.setText("Desenvolvedor:");
         PanelVoto.add(Dev, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 100, -1));
 
         VoteNullBranco.setFont(new java.awt.Font("Segoe UI", 1, 35)); // NOI18N
@@ -584,17 +574,16 @@ public class TelaVotacao2 extends javax.swing.JFrame {
     private void ConfirmaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConfirmaActionPerformed
         String nmr = Nmr1lbl.getText() + Nmr2lbl.getText();
 
-    // Verifica se o número corresponde a um candidato e incrementa o voto
     if (Game1.numero.equals(nmr)) {
         Game1.addVoto();
     } else if (Game2.numero.equals(nmr)) {
         Game2.addVoto();
     }
 
-    TelaVotacao3 Fim = new TelaVotacao3(Game1.getVotos(), Game2.getVotos());
-    Fim.setLocationRelativeTo(null); // Centraliza a janela
-    Fim.setVisible(true);
-    dispose();
+        TelaVotacao3 Fim = new TelaVotacao3(Game1.getVotos(), Game2.getVotos());
+        Fim.setLocationRelativeTo(null);
+        Fim.setVisible(true);
+        dispose();
     }//GEN-LAST:event_ConfirmaActionPerformed
 
     private void CorrigeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CorrigeActionPerformed
@@ -666,6 +655,8 @@ public class TelaVotacao2 extends javax.swing.JFrame {
         GameName.setText("");
         DevName.setText("");
         NumeroErrado.setVisible(false);
+        Gamelbl.setVisible(false);
+
     }//GEN-LAST:event_BrancoActionPerformed
 
     /**

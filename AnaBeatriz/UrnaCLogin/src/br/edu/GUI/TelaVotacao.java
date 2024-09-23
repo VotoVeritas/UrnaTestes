@@ -3,7 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package br.edu.GUI;
-import br.edu.entities.Candidato;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.Timer;
@@ -16,13 +15,15 @@ public class TelaVotacao extends javax.swing.JFrame {
     /**
      * Creates new form TelaPrincipal
      */
+    
     Timer tempo;
     public TelaVotacao() {
         initComponents();
         setLocationRelativeTo(null);
     }
     
-    
+    private boolean isActionPerformed = false;
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -425,16 +426,20 @@ public class TelaVotacao extends javax.swing.JFrame {
     }//GEN-LAST:event_Num0ActionPerformed
 
     private void ConfirmaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConfirmaActionPerformed
-            tempo=new Timer(3000, new ActionListener(){
+        if (!isActionPerformed) {
+        isActionPerformed = true; // Marca como já realizada
+
+        tempo = new Timer(3000, new ActionListener() {
             @Override
-                public void actionPerformed(ActionEvent e) {
+            public void actionPerformed(ActionEvent e) {
                 TelaVotacao2 Votar = new TelaVotacao2(100, 100);
                 Votar.setVisible(true);
                 dispose();
                 tempo.stop();
-                }
-            });
-            tempo.start();
+            }
+        });
+        tempo.start();
+    }
     }//GEN-LAST:event_ConfirmaActionPerformed
 
     private void CorrigeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CorrigeActionPerformed
