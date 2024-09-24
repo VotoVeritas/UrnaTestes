@@ -30,17 +30,12 @@ public class TelaVotacao2 extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null); 
         FalseContent();
-        
-        System.out.println(Game1.votos);
-        System.out.println(Game2.votos);
     }
     
     public void TrueContent(){
     Gamelbl.setVisible(true);
     Name.setVisible(true);
     Dev.setVisible(true);
-    System.out.println(Game1.votos);
-        System.out.println(Game2.votos);
     }
     
     public void FalseContent(){
@@ -66,8 +61,6 @@ public class TelaVotacao2 extends javax.swing.JFrame {
     public void Basic(){
     PanelTopo.setVisible(true);
     PanelOpcoes.setVisible(true);
-    System.out.println(Game1.votos);
-        System.out.println(Game2.votos);
     }
     
     
@@ -605,6 +598,7 @@ public class TelaVotacao2 extends javax.swing.JFrame {
             TelaVotacao3 newTelaVotacao3 = TelaVotacao3.getInstance(Game1.getVotos(), Game2.getVotos());
             newTelaVotacao3.setVisible(true);
             Reiniciar();
+            PanelNumero.setVisible(true);
             dispose();
         }
     }//GEN-LAST:event_ConfirmaActionPerformed

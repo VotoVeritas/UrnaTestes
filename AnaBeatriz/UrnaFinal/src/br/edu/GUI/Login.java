@@ -534,6 +534,8 @@ public class Login extends javax.swing.JFrame {
     TelaVotacao newTelaVotacao = TelaVotacao.getInstance();
     newTelaVotacao.setVisible(true);
     dispose();
+    
+    Corrigir();
     }//GEN-LAST:event_ConfirmaActionPerformed
 
     private void SenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SenhaActionPerformed
